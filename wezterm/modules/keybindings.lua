@@ -6,21 +6,21 @@ function M.init(config)
 	local action = wezterm.action
 	config.keys = {
 		{
-			mods = "CTRL",
+			mods = "CMD|SHIFT",
 			key = "v",
 			action = action.SplitHorizontal({
 				cwd = wezterm.home_dir,
 			}),
 		},
 		{
-			mods = "CTRL",
+			mods = "CMD|SHIFT",
 			key = "s",
 			action = action.SplitVertical({
 				cwd = wezterm.home_dir,
 			}),
 		},
 		{
-			mods = "CMD",
+			mods = "CMD|SHIFT",
 			key = "w",
 			action = action.CloseCurrentPane({ confirm = false }),
 		},
@@ -31,33 +31,33 @@ function M.init(config)
 		},
 
 		{
-			mods = "CTRL",
+			mods = "CMD|SHIFT",
 			key = "h",
 			action = action.ActivatePaneDirection("Left"),
 		},
 		{
-			mods = "CTRL",
+			mods = "CMD|SHIFT",
 			key = "l",
 			action = action.ActivatePaneDirection("Right"),
 		},
 		{
-			mods = "CTRL",
+			mods = "CMD|SHIFT",
 			key = "k",
 			action = action.ActivatePaneDirection("Up"),
 		},
 		{
-			mods = "CTRL",
+			mods = "CMD|SHIFT",
 			key = "j",
 			action = action.ActivatePaneDirection("Down"),
 		},
 		{
 			mods = "CMD|SHIFT",
-			key = "h",
+			key = "LeftArrow",
 			action = action.ActivateTabRelative(-1),
 		},
 		{
 			mods = "CMD|SHIFT",
-			key = "l",
+			key = "RightArrow",
 			action = action.ActivateTabRelative(1),
 		},
     {
@@ -69,7 +69,17 @@ function M.init(config)
       mods="CTRL|SHIFT", 
       key="Tab",
       action="DisableDefaultAssignment"
-    }
+    },
+    -- {
+    --   mods="CMD", 
+    --   key="w",
+    --   action="DisableDefaultAssignment"
+    -- },
+    -- {
+    --   mods="CTRL", 
+    --   key="q",
+    --   action= action.CloseCurrentPane { confirm = false }
+    -- },
 	}
 end
 
