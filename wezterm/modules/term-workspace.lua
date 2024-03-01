@@ -16,6 +16,7 @@ function M.init(_)
 			local overrides = window:get_config_overrides() or {}
 
 			overrides.line_height = 1
+      overrides.font_size = 11
 
 			window:set_config_overrides(overrides)
 		end

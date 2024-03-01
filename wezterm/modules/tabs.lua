@@ -29,6 +29,14 @@ local nord = {
   inactive_tab_fg = "#D8DEE9",
 }
 
+local catpuccin_frappe = {
+  tab_bar_bg = "#2E3440",
+  active_tab_bg = "#232634",
+  active_tab_fg = "#c6d0f5",
+  inactive_tab_bg = "#838ba7",
+  inactive_tab_fg = "#ECEFF4",
+}
+
 function M.init(config)
 	config.use_fancy_tab_bar = false
 	config.show_tab_index_in_tab_bar = false
@@ -36,7 +44,7 @@ function M.init(config)
 	config.tab_max_width = 50
   --config.tab_bar_at_bottom = true
 
-  local theme = gruvbox_dark -- nord
+  local theme = gruvbox_dark
 
 	config.colors = {
 		tab_bar = {

@@ -6,10 +6,11 @@ local config = wez.config_builder()
 
 config.check_for_updates = false
 
+--config.color_scheme = "catppuccin-frappe"
 config.color_scheme = "GruvboxDark"
--- config.color_scheme = "nord"
+--config.color_scheme = "nord"
 config.font = wez.font("FiraCode Nerd Font Mono")
-config.font_size = 13
+config.font_size = 12
 config.line_height = 1.2
 
 config.freetype_load_target = "Normal"
@@ -37,6 +38,6 @@ config.inactive_pane_hsb = {
 	brightness = 0.6,
 }
 
---config.term = "wezterm"
+config.term = "wezterm"
 
 return config
