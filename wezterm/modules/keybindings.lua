@@ -60,6 +60,16 @@ function M.init(config)
 			key = "l",
 			action = action.ActivateTabRelative(1),
 		},
+    {
+      mods="CTRL", 
+      key="Tab",
+      action="DisableDefaultAssignment"
+    },
+    {
+      mods="CTRL|SHIFT", 
+      key="Tab",
+      action="DisableDefaultAssignment"
+    }
 	}
 end
 
