@@ -1,39 +1,42 @@
-local wezterm = require("wezterm")
-local theme = require("theme")
-local tab = require("tab")
-local keymap = require("keymap")
+local wez = require("wezterm")
 
-local config = wezterm.config_builder()
+local modules = require("modules")
 
-config.color_scheme = "nord"
+local config = wez.config_builder()
 
--- config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
-config.font = wezterm.font("FiraCode Nerd Font Mono")
-config.enable_tab_bar = true
-config.scrollback_lines = 3000
+config.check_for_updates = false
 
--- window_decorations = 'RESIZE',
-config.font_size = 12
-config.cursor_thickness = "0.1cell"
-config.window_frame = {
-  border_left_width = "0cell",
-  border_right_width = "0cell",
-  border_bottom_height = "0cell",
-  border_top_height = "0cell",
-}
--- window_decorations = 'NONE',
+config.color_scheme = "GruvboxDark"
+-- config.color_scheme = "nord"
+config.font = wez.font("FiraCode Nerd Font Mono")
+config.font_size = 13
+config.line_height = 1.2
+
+config.freetype_load_target = "Normal"
+
 config.window_padding = {
-  left = "0cell",
-  right = "0cell",
-  top = "0cell",
-  bottom = "0cell",
+	left = 10,
+	right = 10,
+	top = 0,
+	bottom = 0,
 }
 
-config.force_reverse_video_cursor = true
+config.cursor_thickness = "1.5pt"
 
-theme.setup(config)
-tab.setup(config)
-keymap.setup(config)
+modules.init(config)
 
+config.colors["cursor_bg"] = "#928374"
+config.colors["cursor_border"] = "#928374"
+config.colors["split"] = "#928374"
+
+config.underline_thickness = "1.2pt"
+config.underline_position = "150%"
+
+config.inactive_pane_hsb = {
+	saturation = 0.5,
+	brightness = 0.6,
+}
+
+--config.term = "wezterm"
 
 return config
