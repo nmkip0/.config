@@ -11,7 +11,6 @@
   (into #{}
         (comp
          (filter (fn [path]
-                   (println path)
                    (not (str/starts-with? path m2-dir))))
          (filter (fn [path]
                    (let [file (io/file path)]
