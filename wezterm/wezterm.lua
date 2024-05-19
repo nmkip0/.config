@@ -16,10 +16,10 @@ config.line_height = 1.2
 config.freetype_load_target = "Normal"
 
 config.window_padding = {
-	left = 10,
-	right = 10,
-	top = 0,
-	bottom = 0,
+  left = 10,
+  right = 10,
+  top = 0,
+  bottom = 0,
 }
 
 config.cursor_thickness = "1.5pt"
@@ -34,8 +34,8 @@ config.underline_thickness = "1.2pt"
 config.underline_position = "150%"
 
 config.inactive_pane_hsb = {
-	saturation = 0.5,
-	brightness = 0.6,
+  saturation = 0.5,
+  brightness = 0.6,
 }
 
 config.term = "wezterm"

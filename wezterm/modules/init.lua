@@ -5,9 +5,9 @@ local tabs = require("modules.tabs")
 local M = {}
 
 function M.init(config)
-	keys.init(config)
-	tabs.init(config)
-	term.init(config)
+  keys.init(config)
+  tabs.init(config)
+  term.init(config)
 end
 
 return M
