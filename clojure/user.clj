@@ -2,6 +2,7 @@
 
 (require '[clj-reload.core :as reload])
 (require '[clojure.string :as str])
+(require '[clojure.edn :as edn])
 (require '[clojure.java.io :as io])
 
 (def m2-dir
@@ -30,3 +31,28 @@
 (defn reload-namespaces []
   (reload/reload))
 
+(defonce local-dev* (atom nil))
+
+(defn load-alias []
+  (or @local-dev*
+      (some->> (slurp "deps.local.edn")
+               (edn/read-string)
+               :aliases
+               :local-dev
+               (reset! local-dev*))))
+
+(defn reset-app! []
+  (if-let [sym (some-> (load-alias) :reset-fn)]
+    (let [f (requiring-resolve sym)]
+      (println f)
+      (f))
+    (println "No reset-fn FQN is specified in local-dev alias")))
+
+(defn stop-app! []
+  (if-let [sym (some-> (load-alias) :stop-fn)]
+    (let [f (requiring-resolve sym)]
+      (println f)
+      (f))
+    (println "No stop-fn FQN is specified in local-dev alias")))
+
+(println "Global user.clj loaded")
