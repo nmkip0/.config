@@ -9,6 +9,7 @@ auto-local-branch = true
 default-command = "log-reversed"
 diff-instructions = false
 pager = "delta"
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 
 [ui.diff]
 format = "git"
