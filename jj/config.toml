@@ -8,11 +8,13 @@ auto-local-branch = true
 [ui]
 default-command = "log-reversed"
 diff-instructions = false
-pager = "delta"
+pager = ["sh", "-c", "delta --config $HOME/.config/delta/config.ini"]
+diff.format="git"
 diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 
-[ui.diff]
-format = "git"
+[merge-tools.dt]
+program = "difft" 
+diff-args = ["--color=always", "--tab-width=2", "--display=side-by-side", "$left", "$right"]
 
 [aliases]
 log-reversed = ["log", "--reversed"]
@@ -22,7 +24,3 @@ push = ["git", "push"]
 
 [revsets]
 log = "roots(trunk()..@):: | trunk()"
-
-[merge-tools.dt]
-program = "difft" 
-diff-args = ["--color=always", "$left", "$right"]
