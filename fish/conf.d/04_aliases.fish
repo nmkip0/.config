@@ -1,0 +1,11 @@
+# alias l='ls -lah'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias portal='bb ~/scripts/portal-server'
+alias ka='kafkactl'
+alias ls='lsd'
+alias vim='nvim'
+alias z='cd'
+# Confirm before deleting
+alias rm='rm -i'
