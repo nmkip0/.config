@@ -4,6 +4,7 @@ email = "juan.ignacio848@gmail.com"
 
 [git]
 auto-local-branch = true
+push-new-bookmarks = true
 
 [ui]
 default-command = "log-reversed"
@@ -16,11 +17,63 @@ diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 program = "difft" 
 diff-args = ["--color=always", "--tab-width=2", "--display=side-by-side", "$left", "$right"]
 
-[aliases]
-log-reversed = ["log", "--reversed"]
+[merge-tools.vim]
+program = "nvim"
+merge-args = [
+  "-c",
+  "let g:jj_diffconflicts_marker_length=$marker_length",
+  "-c",
+  "JJDiffConflicts!",
+  "$output",
+  "$base",
+  "$left",
+  "$right",
+]
+merge-tool-edits-conflict-markers = true
 
+[aliases]
 fetch = ["git", "fetch"]
 push = ["git", "push"]
+log-reversed = ["log", "--reversed"]
+log-oneline = ["log", "-T", "log_oneline_compact", "--no-graph"]
+l = ["log-oneline", "-r", "::@ & ~merges()"]
+
+[colors]
+current = { fg = "yellow", bg = "black", bold = true, underline = true }
+
+[revset-aliases]
+'local()' = 'trunk()..mine()'
 
 [revsets]
-log = "roots(trunk()..@):: | trunk()"
+log = "fork_point(trunk():: | @)::@ | trunk()"
+
+[template-aliases]
+'format_as_date(timestamp)' = 'timestamp.local().format("%Y-%m-%d")'
+
+log_oneline_compact = '''
+if(root,
+  format_root_commit(self),
+  label(if(current_working_copy, "working_copy"),
+    concat(
+      separate(" ",
+        format_short_change_id_with_hidden_and_divergent_info(self),
+        format_short_commit_id(commit_id),
+        pad_end(10, truncate_end(10, author.email())),
+        format_as_date(commit_timestamp(self)),
+        bookmarks,
+        tags,
+        working_copies,
+        if(git_head, label("git_head", "git_head()")),
+        if(conflict, label("conflict", "conflict")),
+        if(config("ui.show-cryptographic-signatures").as_boolean(),
+          format_short_cryptographic_signature(signature)),
+        if(empty, label("empty", "(empty)")),
+        if(description,
+          description.first_line(),
+          label(if(empty, "empty"), description_placeholder),
+        ),
+      ) ++ "\n",
+    ),
+  )
+)
+'''
