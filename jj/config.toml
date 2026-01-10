@@ -3,7 +3,7 @@ name = "Juan Ignacio Lopez"
 email = "juan.ignacio848@gmail.com"
 
 [git]
-auto-local-branch = true
+auto-local-bookmark = true
 push-new-bookmarks = true
 
 [ui]

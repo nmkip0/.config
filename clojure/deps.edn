@@ -1,4 +1,5 @@
 {:mvn/repos {"sonatype" {:url "https://oss.sonatype.org/content/repositories/snapshots/"}}
+ :paths ["src"]
 
  :aliases
  {:criterium {:extra-deps {criterium/criterium {:mvn/version "RELEASE"}}}
@@ -25,17 +26,21 @@
           :extra-deps {nrepl/nrepl {:mvn/version "1.0.0"}
                        cider/cider-nrepl {:mvn/version "0.28.5"}
                        djblue/portal {:mvn/version "0.48.0"}
+
+                       org.hdrhistogram/HdrHistogram {:mvn/version "2.2.2"}
+                       com.clojure-goes-fast/clj-async-profiler {:mvn/version "1.6.2"}
+                       mvxcvi/puget {:mvn/version "1.3.4"}
                        io.github.hlship/trace {:mvn/version "1.2"}
                        criterium/criterium {:mvn/version "0.4.6"}
-                       metosin/malli {:mvn/version "0.14.0"}
                        io.github.tonsky/clj-reload {:mvn/version "0.7.0"}
                        vvvvalvalval/scope-capture {:mvn/version "0.3.3"}
-                       io.julienvincent/clojure-test {:local/root "/Users/nmkip/projects/oss/clojure-test.nvim/"}
-                       mvxcvi/puget {:mvn/version "1.3.4"}}
+                       io.julienvincent/clojure-test {:mvn/version "0.3.0"}
+                       ;; io.julienvincent/clojure-test {:local/root "/Users/nmkip/projects/oss/clojure-test.nvim/"}
+                       }
           :jvm-opts ["-Djdk.attach.allowAttachSelf"
                      "-XX:+UseG1GC"
                      "-XX:-OmitStackTraceInFastThrow"
-                     "-XX:+UnlockDiagnosticVMOptions" 
+                     "-XX:+UnlockDiagnosticVMOptions"
                      "-XX:+DebugNonSafepoints"]
           :main-opts ["-e" "(load-file (str (System/getProperty \"user.home\") \"/.config/clojure/user.clj\"))"
                       "-m" "nrepl.cmdline"
